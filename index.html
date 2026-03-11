@@ -110,6 +110,12 @@ gap:15px;
 .gallery img{
 width:100%;
 border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
 }
 
 footer{
@@ -118,17 +124,37 @@ text-align:center;
 padding:40px;
 }
 
-button{
-background:#38bdf8;
-border:none;
-padding:12px 22px;
-border-radius:6px;
-margin-top:20px;
-cursor:pointer;
+html{
+scroll-behavior:smooth;
 }
 
-button:hover{
-background:#0284c7;
+/* LIGHTBOX */
+
+#lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+#lightbox span{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+cursor:pointer;
 }
 
 </style>
@@ -231,27 +257,18 @@ Lightroom
 <div class="grid">
 
 <div class="card">
-
 <h3>Substation Projects</h3>
-
 BREB & PGCB grid infrastructure work.
-
 </div>
 
 <div class="card">
-
 <h3>Excel Automation Tool</h3>
-
 Project billing automation system.
-
 </div>
 
 <div class="card">
-
 <h3>Web Development</h3>
-
 Multiple WordPress and business websites.
-
 </div>
 
 </div>
@@ -263,14 +280,7 @@ Multiple WordPress and business websites.
 
 <h2 class="section-title">Photography</h2>
 
-<div class="gallery">
-
-<img src="https://picsum.photos/400/300?1">
-<img src="https://picsum.photos/400/300?2">
-<img src="https://picsum.photos/400/300?3">
-<img src="https://picsum.photos/400/300?4">
-
-</div>
+<div id="flickr-gallery" class="gallery"></div>
 
 </section>
 
@@ -281,9 +291,9 @@ Multiple WordPress and business websites.
 
 <p>
 
-Email: arafat.dip.ee@gmail.com
+Email: arafat.dip.ee@gmail.com  
 <br><br>
-LinkedIn: https://www.linkedin.com/in/arafatdipee/ 
+LinkedIn: https://www.linkedin.com/in/arafatdipee/  
 <br>
 GitHub  
 
@@ -297,6 +307,60 @@ GitHub
 © 2026 Arafat
 
 </footer>
+
+
+<!-- LIGHTBOX -->
+
+<div id="lightbox">
+
+<span onclick="closeLightbox()">×</span>
+
+<img id="lightbox-img">
+
+</div>
+
+
+<script>
+
+function jsonFlickrFeed(data){
+
+const gallery=document.getElementById("flickr-gallery");
+
+data.items.slice(0,12).forEach(photo=>{
+
+const img=document.createElement("img");
+
+const large=photo.media.m.replace("_m.","_b.");
+
+img.src=photo.media.m;
+
+img.onclick=()=>openLightbox(large);
+
+gallery.appendChild(img);
+
+});
+
+}
+
+function openLightbox(src){
+
+document.getElementById("lightbox-img").src=src;
+
+document.getElementById("lightbox").style.display="flex";
+
+}
+
+function closeLightbox(){
+
+document.getElementById("lightbox").style.display="none";
+
+}
+
+</script>
+
+
+<script src="https://www.flickr.com/services/feeds/photos_public.gne?id=100247052@N07&format=json"></script>
+
 
 </body>
 </html>
