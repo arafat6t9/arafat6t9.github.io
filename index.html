@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
@@ -19,70 +20,169 @@ box-sizing:border-box;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#0f172a;
+background:#020617;
 color:white;
-line-height:1.6;
 }
+
+/* NAVBAR */
 
 nav{
 position:fixed;
 width:100%;
-background:#020617;
 padding:15px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+background:rgba(2,6,23,0.7);
+backdrop-filter:blur(10px);
 z-index:1000;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-margin-left:20px;
+margin-left:25px;
+transition:0.3s;
+position:relative;
 }
 
 nav a:hover{
 color:#38bdf8;
 }
 
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-background:linear-gradient(120deg,#020617,#0f172a);
-}
-
-.hero h1{
-font-size:60px;
-margin-bottom:10px;
-}
-
-.hero span{
+nav a.active{
 color:#38bdf8;
 }
 
-.hero p{
+/* SECTIONS OFFSET */
+
+section{
+scroll-margin-top:90px;
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+overflow:hidden;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+#particles{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:1;
+}
+
+.typing{
 font-size:20px;
 margin-top:10px;
+color:#94a3b8;
+height:30px;
 }
+
+/* BUTTON */
+
+.cta{
+margin-top:30px;
+padding:14px 30px;
+border:none;
+border-radius:30px;
+background:#38bdf8;
+color:white;
+cursor:pointer;
+font-size:16px;
+box-shadow:0 0 10px #38bdf8;
+transition:0.3s;
+}
+
+.cta:hover{
+box-shadow:0 0 25px #38bdf8;
+transform:scale(1.05);
+}
+
+/* PROFILE */
+
+.profile-wrapper{
+position:relative;
+display:inline-block;
+border-radius:50%;
+padding:6px;
+}
+
+.profile-wrapper::before{
+content:"";
+position:absolute;
+top:-4px;
+left:-4px;
+right:-4px;
+bottom:-4px;
+border-radius:50%;
+background:linear-gradient(45deg,#38bdf8,#06b6d4,#0ea5e9,#38bdf8);
+z-index:-1;
+animation:borderGlow 6s linear infinite;
+}
+
+.profile-photo{
+width:160px;
+height:160px;
+border-radius:50%;
+object-fit:cover;
+animation:floatPhoto 6s ease-in-out infinite;
+}
+
+@keyframes floatPhoto{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
+
+@keyframes borderGlow{
+0%{filter:hue-rotate(0deg)}
+100%{filter:hue-rotate(360deg)}
+}
+
+/* CONTAINER */
 
 .container{
 max-width:1100px;
 margin:auto;
-padding:80px 20px;
+padding:100px 20px;
 }
 
 .section-title{
 font-size:32px;
 margin-bottom:40px;
-border-bottom:2px solid #38bdf8;
+border-bottom:3px solid #38bdf8;
 display:inline-block;
-padding-bottom:5px;
 }
+
+/* REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:all 0.8s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* GRID */
 
 .grid{
 display:grid;
@@ -90,16 +190,62 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 }
 
+/* CARDS */
+
 .card{
-background:#1e293b;
+background:#0f172a;
 padding:25px;
 border-radius:12px;
-transition:0.3s;
+transition:0.4s;
+opacity:0;
+transform:translateY(40px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-8px);
 }
+
+/* SKILLS */
+
+.skill{
+margin-bottom:25px;
+}
+
+.skill-bar{
+height:8px;
+background:#1e293b;
+border-radius:10px;
+overflow:hidden;
+}
+
+.skill-progress{
+height:100%;
+background:#38bdf8;
+width:0;
+transition:width 2s;
+}
+
+/* TIMELINE */
+
+.timeline{
+border-left:3px solid #38bdf8;
+padding-left:20px;
+}
+
+.timeline-item{
+margin-bottom:30px;
+}
+
+.timeline-item h3{
+color:#38bdf8;
+}
+
+/* GALLERY */
 
 .gallery{
 display:grid;
@@ -116,16 +262,6 @@ transition:0.3s;
 
 .gallery img:hover{
 transform:scale(1.05);
-}
-
-footer{
-background:#020617;
-text-align:center;
-padding:40px;
-}
-
-html{
-scroll-behavior:smooth;
 }
 
 /* LIGHTBOX */
@@ -157,6 +293,14 @@ font-size:40px;
 cursor:pointer;
 }
 
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:40px;
+background:#020617;
+}
+
 </style>
 
 </head>
@@ -168,115 +312,132 @@ cursor:pointer;
 <h3>Arafat Chowdhury</h3>
 
 <div>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#photography">Photography</a>
-<a href="#contact">Contact</a>
+<a href="#about" class="nav-link">About</a>
+<a href="#skills" class="nav-link">Skills</a>
+<a href="#timeline" class="nav-link">Career</a>
+<a href="#projects" class="nav-link">Projects</a>
+<a href="#photography" class="nav-link">Photography</a>
+<a href="#contact" class="nav-link">Contact</a>
 </div>
 
 </nav>
 
-
 <section class="hero">
 
-<h1>Arafat Chowdhury</h1>
+<canvas id="particles"></canvas>
 
-<p>
-<span>Senior Electrical Engineer</span> | Photographer | Web Developer
-</p>
+<div class="hero-content">
 
-<p>
-Power Systems • Automation • Creative Technology
-</p>
+<div class="profile-wrapper">
+<img src="profile.jpg" class="profile-photo">
+</div>
+
+<h1>Arafat <span>Chowdhury</span></h1>
+
+<p class="typing"></p>
+
+<button class="cta" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+Explore My Work
+</button>
+
+</div>
 
 </section>
 
-
-<section class="container" id="about">
+<section class="container reveal" id="about">
 
 <h2 class="section-title">About Me</h2>
 
 <p>
-
-Senior Electrical Engineer working on power grid and substation projects.  
-Experienced in project coordination, technical documentation, and engineering solutions.
-
-Alongside engineering, I develop automation tools, websites, and creative photography projects.
-
+Senior Electrical Engineer working on power grid and substation projects.
+I also develop automation tools, websites, and work as a freelance photographer.
 </p>
 
 </section>
 
-
-<section class="container" id="skills">
+<section class="container reveal" id="skills">
 
 <h2 class="section-title">Skills</h2>
 
-<div class="grid">
-
-<div class="card">
-
-<h3>Engineering</h3>
-
-Substation Engineering  
-Power Systems  
-Project Management  
-
+<div class="skill">
+Engineering
+<div class="skill-bar">
+<div class="skill-progress" style="width:90%"></div>
+</div>
 </div>
 
-<div class="card">
-
-<h3>Technical</h3>
-
-Excel VBA Automation  
-Web Development  
-WordPress  
-
+<div class="skill">
+Web Development
+<div class="skill-bar">
+<div class="skill-progress" style="width:80%"></div>
+</div>
 </div>
 
-<div class="card">
+<div class="skill">
+Photography
+<div class="skill-bar">
+<div class="skill-progress" style="width:85%"></div>
+</div>
+</div>
 
-<h3>Creative</h3>
+</section>
 
-Photography  
-Photoshop  
-Lightroom  
+<section class="container reveal" id="timeline">
 
+<h2 class="section-title">Career Timeline</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>2014 – 2017</h3>
+Fashion & Wedding Photographer
+</div>
+
+<div class="timeline-item">
+<h3>2017 – 2020</h3>
+Assistant Electrical Engineer
+</div>
+
+<div class="timeline-item">
+<h3>2020 – Present</h3>
+Senior Electrical Engineer
 </div>
 
 </div>
 
 </section>
 
-
-<section class="container" id="projects">
+<section class="container reveal" id="projects">
 
 <h2 class="section-title">Projects</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>Substation Projects</h3>
-BREB & PGCB grid infrastructure work.
+<h3>⚡ Substation Engineering</h3>
+BREB and PGCB power grid infrastructure projects.
 </div>
 
 <div class="card">
-<h3>Excel Automation Tool</h3>
+<h3>📊 Excel Automation Tool</h3>
 Project billing automation system.
 </div>
 
 <div class="card">
-<h3>Web Development</h3>
-Multiple WordPress and business websites.
+<h3>🌐 Website Development</h3>
+Business and portfolio websites.
+</div>
+
+<div class="card">
+<h3>📷 Photography Portfolio</h3>
+Street and event photography projects.
 </div>
 
 </div>
 
 </section>
 
-
-<section class="container" id="photography">
+<section class="container reveal" id="photography">
 
 <h2 class="section-title">Photography</h2>
 
@@ -284,83 +445,186 @@ Multiple WordPress and business websites.
 
 </section>
 
-
-<section class="container" id="contact">
+<section class="container reveal" id="contact">
 
 <h2 class="section-title">Contact</h2>
 
 <p>
 
-Email: arafat.dip.ee@gmail.com  
+📧 <a href="mailto:arafat.dip.ee@gmail.com">arafat.dip.ee@gmail.com</a>
+
 <br><br>
-LinkedIn: https://www.linkedin.com/in/arafatdipee/  
-<br>
-GitHub  
+
+🔗 <a href="https://www.linkedin.com/in/arafatdipee/" target="_blank">
+LinkedIn Profile </a>
 
 </p>
 
 </section>
 
-
 <footer>
-
-© 2026 Arafat
-
+© 2026 Arafat Chowdhury
 </footer>
 
-
-<!-- LIGHTBOX -->
-
 <div id="lightbox">
-
 <span onclick="closeLightbox()">×</span>
-
 <img id="lightbox-img">
-
 </div>
-
 
 <script>
 
-function jsonFlickrFeed(data){
+/* NAV SMOOTH SCROLL */
 
+document.querySelectorAll(".nav-link").forEach(link=>{
+link.addEventListener("click",function(e){
+e.preventDefault();
+const target=document.querySelector(this.getAttribute("href"));
+target.scrollIntoView({behavior:"smooth"});
+});
+});
+
+/* ACTIVE NAV */
+
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll",()=>{
+let current="";
+sections.forEach(section=>{
+const sectionTop=section.offsetTop;
+if(pageYOffset>=sectionTop-120){
+current=section.getAttribute("id");
+}
+});
+
+navLinks.forEach(a=>{
+a.classList.remove("active");
+if(a.getAttribute("href")==="#"+current){
+a.classList.add("active");
+}
+});
+});
+
+/* REVEAL */
+
+function revealSections(){
+document.querySelectorAll(".reveal").forEach(section=>{
+if(section.getBoundingClientRect().top < window.innerHeight-120){
+section.classList.add("active");
+}
+});
+}
+
+window.addEventListener("scroll",revealSections);
+revealSections();
+
+/* CARD ANIMATION */
+
+const cards=document.querySelectorAll(".card");
+
+window.addEventListener("scroll",()=>{
+cards.forEach(card=>{
+if(card.getBoundingClientRect().top < window.innerHeight-100){
+card.classList.add("show");
+}
+});
+});
+
+/* TYPING */
+
+const roles=["Senior Electrical Engineer","Photographer","Web Developer"];
+let roleIndex=0,charIndex=0;
+const typing=document.querySelector(".typing");
+
+function type(){
+if(charIndex<roles[roleIndex].length){
+typing.textContent+=roles[roleIndex].charAt(charIndex++);
+setTimeout(type,80);
+}else setTimeout(erase,1500);
+}
+
+function erase(){
+if(charIndex>0){
+typing.textContent=roles[roleIndex].substring(0,--charIndex);
+setTimeout(erase,40);
+}else{
+roleIndex=(roleIndex+1)%roles.length;
+setTimeout(type,200);
+}
+}
+
+type();
+
+/* PARTICLES */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+class Particle{
+constructor(){
+this.x=Math.random()*canvas.width;
+this.y=Math.random()*canvas.height;
+this.size=Math.random()*2;
+this.vx=Math.random()*0.5-0.25;
+this.vy=Math.random()*0.5-0.25;
+}
+
+update(){
+this.x+=this.vx;
+this.y+=this.vy;
+}
+
+draw(){
+ctx.fillStyle="#38bdf8";
+ctx.beginPath();
+ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+ctx.fill();
+}
+}
+
+for(let i=0;i<100;i++) particles.push(new Particle());
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{p.update();p.draw();});
+requestAnimationFrame(animate);
+}
+
+animate();
+
+/* FLICKR */
+
+function jsonFlickrFeed(data){
 const gallery=document.getElementById("flickr-gallery");
 
 data.items.slice(0,12).forEach(photo=>{
-
 const img=document.createElement("img");
-
 const large=photo.media.m.replace("_m.","_b.");
-
 img.src=photo.media.m;
-
 img.onclick=()=>openLightbox(large);
-
 gallery.appendChild(img);
-
 });
-
 }
 
+/* LIGHTBOX */
+
 function openLightbox(src){
-
 document.getElementById("lightbox-img").src=src;
-
 document.getElementById("lightbox").style.display="flex";
-
 }
 
 function closeLightbox(){
-
 document.getElementById("lightbox").style.display="none";
-
 }
 
 </script>
 
-
 <script src="https://www.flickr.com/services/feeds/photos_public.gne?id=100247052@N07&format=json"></script>
-
 
 </body>
 </html>
