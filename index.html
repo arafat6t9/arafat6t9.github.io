@@ -1,45 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
-<title>Arafat | Electrical Engineer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arafat Chowdhury | Electrical Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+*{
 margin:0;
-font-family:Arial;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
 background:#0f172a;
 color:white;
+line-height:1.6;
 }
 
-header{
+nav{
+position:fixed;
+width:100%;
+background:#020617;
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+nav a:hover{
+color:#38bdf8;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-padding:120px 20px;
-background:linear-gradient(120deg,#0f172a,#1e293b);
+padding:20px;
+background:linear-gradient(120deg,#020617,#0f172a);
 }
 
-h1{
-font-size:50px;
+.hero h1{
+font-size:60px;
 margin-bottom:10px;
 }
 
-.subtitle{
+.hero span{
 color:#38bdf8;
-font-size:18px;
+}
+
+.hero p{
+font-size:20px;
+margin-top:10px;
 }
 
 .container{
 max-width:1100px;
 margin:auto;
-padding:60px 20px;
+padding:80px 20px;
 }
 
 .section-title{
-font-size:30px;
-margin-bottom:30px;
+font-size:32px;
+margin-bottom:40px;
 border-bottom:2px solid #38bdf8;
 display:inline-block;
 padding-bottom:5px;
@@ -48,24 +87,48 @@ padding-bottom:5px;
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+gap:25px;
 }
 
 .card{
 background:#1e293b;
 padding:25px;
 border-radius:12px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
 }
 
 footer{
+background:#020617;
 text-align:center;
 padding:40px;
-background:#020617;
 }
 
-a{
-color:#38bdf8;
-text-decoration:none;
+button{
+background:#38bdf8;
+border:none;
+padding:12px 22px;
+border-radius:6px;
+margin-top:20px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0284c7;
 }
 
 </style>
@@ -74,103 +137,159 @@ text-decoration:none;
 
 <body>
 
-<header>
+<nav>
 
-<h1>Arafat</h1>
+<h3>Arafat Chowdhury</h3>
 
-<p class="subtitle">
-Senior Electrical Engineer | Photographer | Web Developer
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#photography">Photography</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+
+<section class="hero">
+
+<h1>Arafat Chowdhury</h1>
+
+<p>
+<span>Senior Electrical Engineer</span> | Photographer | Web Developer
 </p>
 
-</header>
+<p>
+Power Systems • Automation • Creative Technology
+</p>
+
+</section>
 
 
-<div class="container">
+<section class="container" id="about">
 
 <h2 class="section-title">About Me</h2>
 
 <p>
-Senior Electrical Engineer working in power sector projects including substations and grid infrastructure. I also develop web systems and automation tools and work as a freelance photographer.
+
+Senior Electrical Engineer working on power grid and substation projects.  
+Experienced in project coordination, technical documentation, and engineering solutions.
+
+Alongside engineering, I develop automation tools, websites, and creative photography projects.
+
 </p>
 
-</div>
+</section>
 
 
-<div class="container">
+<section class="container" id="skills">
 
 <h2 class="section-title">Skills</h2>
 
 <div class="grid">
 
 <div class="card">
+
 <h3>Engineering</h3>
-Substation Engineering<br>
-Power Systems<br>
-Project Coordination
+
+Substation Engineering  
+Power Systems  
+Project Management  
+
 </div>
 
 <div class="card">
+
 <h3>Technical</h3>
-Excel VBA<br>
-Web Development<br>
-WordPress
+
+Excel VBA Automation  
+Web Development  
+WordPress  
+
 </div>
 
 <div class="card">
+
 <h3>Creative</h3>
-Photography<br>
-Photoshop<br>
-Lightroom
-</div>
+
+Photography  
+Photoshop  
+Lightroom  
 
 </div>
 
 </div>
 
+</section>
 
-<div class="container">
+
+<section class="container" id="projects">
 
 <h2 class="section-title">Projects</h2>
 
 <div class="grid">
 
 <div class="card">
+
 <h3>Substation Projects</h3>
-Work on BREB and PGCB grid projects.
+
+BREB & PGCB grid infrastructure work.
+
 </div>
 
 <div class="card">
-<h3>Excel Billing System</h3>
-Automated billing tool used in project management.
+
+<h3>Excel Automation Tool</h3>
+
+Project billing automation system.
+
 </div>
 
 <div class="card">
+
 <h3>Web Development</h3>
-Developed multiple WordPress websites.
-</div>
 
-<div class="card">
-<h3>Photography</h3>
-Wedding and street photography projects.
-</div>
+Multiple WordPress and business websites.
 
 </div>
 
 </div>
 
+</section>
 
-<div class="container">
+
+<section class="container" id="photography">
+
+<h2 class="section-title">Photography</h2>
+
+<div class="gallery">
+
+<img src="https://picsum.photos/400/300?1">
+<img src="https://picsum.photos/400/300?2">
+<img src="https://picsum.photos/400/300?3">
+<img src="https://picsum.photos/400/300?4">
+
+</div>
+
+</section>
+
+
+<section class="container" id="contact">
 
 <h2 class="section-title">Contact</h2>
 
 <p>
+
 Email: arafat.dip.ee@gmail.com
 <br><br>
-LinkedIn: https://www.linkedin.com/in/arafatdipee/<br>
-GitHub
+LinkedIn: https://www.linkedin.com/in/arafatdipee/ 
+<br>
+GitHub  
+
 </p>
 
-</div>
+</section>
 
 
 <footer>
@@ -180,5 +299,4 @@ GitHub
 </footer>
 
 </body>
-
 </html>
